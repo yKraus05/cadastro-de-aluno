@@ -39,7 +39,7 @@
                     <button onclick="cadastrar()">cadastrar</button>
 
 <script>
-    var token = "632c16e707d5476086037e8554ff8a57";
+    var token = "5f2282edfeb9417d8be1ff3027c1ffa2";
          // Exemplo de requisição GET para listar pessoas
         fetch("https://crudcrud.com/api/"+token+"/pessoas")
         .then(response => response.json())
@@ -67,11 +67,23 @@
                 celulaNascimento.innerHTML = elementoQueEstaSendoPercorrido.nascimento;
                 celulaTelefone.innerHTML = elementoQueEstaSendoPercorrido.telefone;
                 celulaEndereco.innerHTML = elementoQueEstaSendoPercorrido.endereco;
+                celulaExcluir.innerHTML = '<button onclick="excluir(\''+elementoQueEstaSendoPercorrido._id+'\')">Excluir</button>';
             })
+        }
+        function excluir(id) {
+            var token = "5f2282edfeb9417d8be1ff3027c1ffa2"
+            fetch("https://crudcrud.com/api/"+token+"/pessoas/"+id, {
+            method: "DELETE"
+            })
+            .finally(()=>{
+            setTimeout(window.location.href = "index.html",2000);
+            });
+            
+            
         }
         
     function cadastrar() {
-        var token = "632c16e707d5476086037e8554ff8a57";
+        var token = "5f2282edfeb9417d8be1ff3027c1ffa2";
           // Exemplo de requisição POST para adicionar uma nova pessoa
         fetch("https://crudcrud.com/api/"+token+"/pessoas", {
         // metodo de requisição (get, post, put, delete)
