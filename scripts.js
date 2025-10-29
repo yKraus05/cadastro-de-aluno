@@ -22,14 +22,17 @@
                 var celulaTelefone = linha.insertCell(2);
                 var celulaEndereco = linha.insertCell(3);
                 var celulaExcluir = linha.insertCell(4);
+                
                 // colocando os valores nas células criadas
                 celulaNome.innerHTML = elementoQueEstaSendoPercorrido.nome;
                 celulaNascimento.innerHTML = elementoQueEstaSendoPercorrido.nascimento;
                 celulaTelefone.innerHTML = elementoQueEstaSendoPercorrido.telefone;
                 celulaEndereco.innerHTML = elementoQueEstaSendoPercorrido.endereco;
                 celulaExcluir.innerHTML = '<button onclick="excluir(\''+elementoQueEstaSendoPercorrido._id+'\')">Excluir</button>';
+                
             })
-        }
+       
+
         function excluir(id) {
             var token = "09d70b40916b4224a2e55e75a71c5625"
             fetch("https://crudcrud.com/api/"+token+"/pessoas/"+id, {
