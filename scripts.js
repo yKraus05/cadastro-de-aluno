@@ -13,7 +13,7 @@
             // [0] pq getElementsByTAgName retorna um array e queremos o primeiro elemento deste array 
             var tabela = document.getElementById("tabelaAlunos").getElementsByTagName("tbody")[0];
             // inserir os dados da tabela a partir da variável de parametros de pessoas
-            pessoas.forEach(function (elementoQueEstaSendoPercorrido) {
+            pessoas.forEach(function (elemento) {
                 // criando uma linha usando uma função no Javascript
                 var linha = tabela.insertRow();
                 // criando a célula 0 da linha trabalhada
@@ -22,16 +22,20 @@
                 var celulaTelefone = linha.insertCell(2);
                 var celulaEndereco = linha.insertCell(3);
                 var celulaExcluir = linha.insertCell(4);
-                
+                var celulaAtualizar = linha.insertCell(5);
                 // colocando os valores nas células criadas
-                celulaNome.innerHTML = elementoQueEstaSendoPercorrido.nome;
-                celulaNascimento.innerHTML = elementoQueEstaSendoPercorrido.nascimento;
-                celulaTelefone.innerHTML = elementoQueEstaSendoPercorrido.telefone;
-                celulaEndereco.innerHTML = elementoQueEstaSendoPercorrido.endereco;
-                celulaExcluir.innerHTML = '<button onclick="excluir(\''+elementoQueEstaSendoPercorrido._id+'\')">Excluir</button>';
-                
+                celulaNome.innerHTML = elemento.nome;
+                celulaNascimento.innerHTML = elemento.nascimento;
+                celulaTelefone.innerHTML = elemento.telefone;
+                celulaEndereco.innerHTML = elemento.endereco;
+                celulaExcluir.innerHTML = '<button onclick="excluir(\''+elemento._id+'\')">Excluir</button>';
+                celulaAtualizar.innerHTML =   '<button onclick="atualizar(\'' + elemento._id + '\',\''+elemento.nome+'\',\''+elemento.telefone+'\',\''+elemento.endereco+'\',\''+elemento.nascimento+'\')">Atualizar</button>';
             })
-       
+        }
+        function atualizar(id,nome,tel,end,data){
+            window.location.href = "atualizar.html?id="+id+"&nome="+nome+"&tel="+tel+"&end="
+            
+        }
 
         function excluir(id) {
             var token = "09d70b40916b4224a2e55e75a71c5625"
